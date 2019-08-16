@@ -17,19 +17,22 @@ class _FabState extends State<Fab> {
 
   @override
   void initState() {
+    // 当state对象创建并且加入到tree中时
     super.initState();
     print('fab initState');
   }
 
   @override
   void didChangeDependencies() {
+    // initState调用后，didChangeDependencies会立即调用
     super.didChangeDependencies();
     print('fab didChangeDependencies');
   }
 
   @override
   void didUpdateWidget(Fab oldWidget) {
-    // 父widget重新build后，子widget就一定会触发didUpdateWidget
+    // 当widget的配置信息发生变化的时候，就会调用该生命周期方法
+    // 一般调用该方法后就会调用build
     super.didUpdateWidget(oldWidget);
     print('fab didUpdateWidget');
   }
