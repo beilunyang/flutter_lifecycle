@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_lifecycle/detail.dart';
+import 'package:flutter_lifecycle/widgets/count.dart';
 import 'package:flutter_lifecycle/widgets/fab.dart';
+import 'package:flutter_lifecycle/widgets/shareData.dart';
 
 void main() => runApp(MyApp());
 
@@ -72,7 +74,20 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     super.didChangeAppLifecycleState(state);
-    print('AppLifeCycleState:${state.toString()}');
+    switch (state) {
+      case AppLifecycleState.inactive:
+        print('appLifeCycleState inactive');
+        break;
+      case AppLifecycleState.resumed:
+        print('appLifeCycleState resumed');
+        break;
+      case AppLifecycleState.paused:
+        print('appLifeCycleState paused');
+        break;
+      case AppLifecycleState.suspending:
+        print('appLifeCycleState suspending');
+        break;
+    }
   }
 
   @override
@@ -81,25 +96,9 @@ class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-            RaisedButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed('/detail');
-              },
-              child: Text('TO DETAIL PAGE'),
-            )
-          ],
-        ),
+      body: ShareDataWidget(
+        data: _counter,
+        child: Count()
       ),
       floatingActionButton: Fab(onPress: _incrementCounter),
     );

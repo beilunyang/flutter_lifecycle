@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Fab extends StatefulWidget {
-  var _onPress;
+  final _onPress;
 
   Fab({ onPress }) : _onPress = onPress;
 
@@ -53,9 +53,9 @@ class _FabState extends State<Fab> {
   Widget build(BuildContext context) {
     print('fab build');
     return FloatingActionButton(
-      onPressed: onPress,
-      tooltip: 'Increment',
-      child: Icon(Icons.add),
+        onPressed: onPress,
+        tooltip: 'Increment',
+        child: Icon(Icons.add),
     );
   }
 }

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 class ShareDataWidget extends InheritedWidget {
+
+  final int data;
+
   ShareDataWidget({
     this.data,
     Widget child
   }) : super(child: child);
-
-  final int data;
 
   static ShareDataWidget of(BuildContext context) {
     return context.inheritFromWidgetOfExactType(ShareDataWidget);
@@ -17,5 +18,4 @@ class ShareDataWidget extends InheritedWidget {
     return oldWidget.data != data;
   }
 
-  // TODO: 明天继续
 }
